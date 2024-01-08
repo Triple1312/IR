@@ -1,0 +1,10 @@
+
+/crossref/
+/parsed/
+/matrix/
+/venv/
+
+/.idea/
+/__pycache__/
+
+doilist.json
