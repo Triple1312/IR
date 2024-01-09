@@ -13,7 +13,7 @@ def getDoiList():
             print(f)
             fstream: List = json.loads(gzip.open(PARSED_DIRECTORY + "/" + f, 'r').read())
             for item in fstream:
-                doilist.append(item['doi'])
+                doilist.append(item['doi'].lower())
     return doilist
 
 
