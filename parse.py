@@ -11,8 +11,9 @@ def parse(filename):
     parsed_papers: List[Paper] = []
     papers = json.loads(gzip.open(filename, 'r').read())["items"]
     for pap in papers:
-        if pap["is-referenced-by-count"] == 0:
+        if pap["is-referenced-by-count"] < 3:
             continue
+        title = pap["title"][0]
         references = []  # [ref["DOI"] for ref in papi["reference"]]
         if "reference" in pap:
             for ref in pap["reference"]:
