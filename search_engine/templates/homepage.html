@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  html *{
+    font-family: Arial, sans-serif;
+  }
+  .center{
+    margin: auto;
+    text-align: center;
+  }
+  .flex-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Search Engine</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Welcome to our Search engine!</h1>
+        <div>
+            <label for="search_box">Search: </label><input type="text" id="search_box">
+            <button id="search_button">Search</button>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("search_button").onclick = function () {
+        let query = document.getElementById("search_box").value;
+        location.href = window.location.href + "search/" + query;
+    };
+
+    // on press of the enter button, also trigger the search button
+    document.getElementById("search_box")
+    .addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById("search_button").click();
+    }
+});
+</script>
+</html>

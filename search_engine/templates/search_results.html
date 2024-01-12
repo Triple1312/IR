@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  html *{
+    font-family: Arial, sans-serif;
+  }
+  .center{
+    margin: auto;
+    text-align: center;
+  }
+  .flex-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    display: inline-block;
+    text-align: left;
+  }
+  ol {
+    display: inline-block;
+    text-align: left;
+  }
+  li {
+      margin-bottom: 10px;
+  }
+  .pagerank_bubble{
+      background-color: green;
+      color: white;
+      font-size: 80%;
+      border-radius: 40%;
+      padding: 4px;
+  }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Search results for {{ search_query }}</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Results for: "{{ search_query }}"</h1>
+
+        <ol>
+            {% for result in results %}
+            <li>
+                <a href="https://doi.org/{{result.doi}}"><b>"{{result.title}}"</b></a>
+                <span class="pagerank_bubble">{{result.pagerank}}</span>
+                <div>
+                    <p>DOI: "{{result.doi}}"</p>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+
+
+</body>
+</html>
