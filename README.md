@@ -24,3 +24,19 @@ On the homepage you can input a search query, the page will redirect you to http
 
 That page will display the results ordered from most to least relevant according to pagerank. Shown are the name, a link
 to the publication and the DOI.
+
+## Screenshots
+Homepage
+![homepage](images/homepage.png)
+
+
+Search for "dynamics"
+![dynamicssearch](images/dynamics_search.png)
+
+
+Search for "somethingsomething"
+![somethingsomething](images/somethingsomething_search.png)
+
+
+Search for "i" (the green bubble denotes the pagerank score)
+![i_search](images/i_search.png)

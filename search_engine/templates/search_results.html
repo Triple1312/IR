@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 <style>
-  html *{
-    font-family: Arial, sans-serif;
-  }
-  .center{
-    margin: auto;
-    text-align: center;
-  }
-  .flex-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   ul {
     display: inline-block;
     text-align: left;
@@ -25,25 +14,55 @@
       margin-bottom: 10px;
   }
   .pagerank_bubble{
-      background-color: green;
+      background-color: mediumseagreen;
       color: white;
       font-size: 80%;
       border-radius: 40%;
       padding: 4px;
   }
+  #papersearchlabel{
+      font-size: 15pt;
+      background: -webkit-linear-gradient(left, royalblue, lawngreen);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  #search_box{
+      padding: 5px;
+      font-size: 12pt;
+      width: 20vw;
+  }
+  #search_button{
+      padding: 5px;
+      font-size: 12pt;
+      background-color: #64c15a;
+      border: 1px solid #5db074;
+      color: white;
+  }
+    </style>
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Search results for {{ search_query }}</title>
 </head>
 <body>
+    <div class="center search_div">
+        <h2></h2>
+        <div class="searchbar_and_button_div">
+            <label id="papersearchlabel" for="search_box"><b>PaperSearch </b></label><input type="text" id="search_box" placeholder="search for a keyword, E.g. Turing" value="{{search_query}}">
+            <button id="search_button">🔎 Search</button>
+        </div>
+    </div>
+    <br>
     <div class="center">
-        <h1>Results for: "{{ search_query }}"</h1>
+        <h1>Showing Results for: "{{ search_query }}"</h1>
 
+        {% if not results %}
+            <h2>No results found</h2>
+        {% endif %}
         <ol>
             {% for result in results %}
             <li>
-                <a href="https://doi.org/{{result.doi}}"><b>"{{result.title}}"</b></a>
+                <a href="https://doi.org/{{result.doi}}"><b>{{result.title}}</b></a>
                 <span class="pagerank_bubble">{{result.pagerank}}</span>
                 <div>
                     <p>DOI: "{{result.doi}}"</p>
@@ -56,4 +75,24 @@
 
 
 </body>
+<script type="text/javascript">
+    // Search for keyword
+    document.getElementById("search_button").onclick = function () {
+        let query = document.getElementById("search_box").value;
+        location.href = window.location.origin + "/search/" +query;
+    };
+    // go back to home page
+    document.getElementById("papersearchlabel").onclick = function () {
+        location.href = window.location.origin;
+    };
+
+    // on press of the enter button, also trigger the search button
+    document.getElementById("search_box")
+    .addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById("search_button").click();
+    }
+});
+</script>
 </html>

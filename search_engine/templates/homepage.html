@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  html *{
-    font-family: Arial, sans-serif;
-  }
-  .center{
-    margin: auto;
-    text-align: center;
-  }
-  .flex-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 <head>
     <meta charset="UTF-8">
     <title>Search Engine</title>
+    <style>
+        h1 {
+          font-size: 72px;
+          background: -webkit-linear-gradient(left, royalblue, lawngreen);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .search_div{
+            margin-top: 20vh;
+        }
+        #search_box{
+            padding: 10px;
+            font-size: 12pt;
+            width: 30vw;
+        }
+        #search_button{
+            padding: 10px;
+            font-size: 12pt;
+            background-color: #64c15a;
+            border: 1px solid #5db074;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div class="center">
-        <h1>Welcome to our Search engine!</h1>
-        <div>
-            <label for="search_box">Search: </label><input type="text" id="search_box">
-            <button id="search_button">Search</button>
+    <div class="center search_div">
+        <h1>PaperSearch Engine</h1>
+        <br>
+        <div class="searchbar_and_button_div">
+            <label hidden for="search_box">Search: </label><input type="text" id="search_box" placeholder="search for a keyword, E.g. Turing">
+            <button id="search_button">🔎 Search</button>
         </div>
     </div>
 </body>

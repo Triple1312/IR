@@ -1,0 +1,14 @@
+html *{
+    font-family: Arial, sans-serif;
+  }
+
+.center{
+    margin: auto;
+    text-align: center;
+}
+
+.flex-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

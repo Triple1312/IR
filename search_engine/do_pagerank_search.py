@@ -25,7 +25,7 @@ def do_pagerank_search(filename, query):
 
     for i in range(len(data)):
         title = data[i]['title']
-        if query in title:
+        if query.lower() in title.lower():
             search_res = SearchResult(title, data[i]["doi"], data[i]["pagerank"])
             results.append(search_res)
 
