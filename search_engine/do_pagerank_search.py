@@ -1,6 +1,6 @@
 # Searches a certain query for pagerank
 import json
-
+import gzip
 
 class SearchResult:
     """
@@ -12,24 +12,33 @@ class SearchResult:
         self.pagerank = pagerank
 
 
-def do_pagerank_search(filename, query):
+def do_pagerank_search(filename, query, max_results):
     """
     Search with a query in the list of documents, order results using pagerank
     :param filename: Name of the JSON file
     :param query: the query to look for
+    :param max_results: the maximum amount of results to show
     :return: list of items ordered by pagerank
     """
-    f = open(filename)
-    data = json.load(f)
+    if ".gz" in filename:
+        data = json.load(gzip.open(filename, "rb"))
+    else:
+        data = json.load(open(filename))
     results = []
 
-    for i in range(len(data)):
-        title = data[i]['title']
-        if query.lower() in title.lower():
-            search_res = SearchResult(title, data[i]["doi"], data[i]["pagerank"])
+    query_words = query.lower().split()
+
+    for paper in data:
+        title = "_NO_TITLE_"
+        if paper["title"]:
+            title = paper['title'][0]  # title is in a list in the data
+        title_words = title.lower().split()
+
+        if all(word in title_words for word in query_words):
+            search_res = SearchResult(title, paper["doi"], paper["score"])
             results.append(search_res)
 
     # Sort results list (highest ranking first)
     results.sort(key=lambda x: x.pagerank, reverse=True)
 
-    return results
+    return results[:max_results]

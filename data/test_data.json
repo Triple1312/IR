@@ -1,22 +1,22 @@
 [
   {
-    "title": "Software testing",
+    "title": ["Software testing"],
     "doi": "10.1002/jhet.5570170325",
-    "pagerank": 99
+    "score": 99
   },
   {
-    "title": "Chemistry",
+    "title": ["Chemistry"],
     "doi": "10.1002/chin.198042225",
-    "pagerank": 69420
+    "score": 69420
   },
   {
-    "title": "Kommunikation mit automaten",
+    "title": ["Kommunikation mit automaten"],
     "doi": "10.1002/chin.198046192",
-    "pagerank": 42
+    "score": 42
   },
   {
-    "title": "The dynamics of parallel Schönflies motion generators: The case of a two-limb system",
+    "title": ["The dynamics of parallel Schönflies motion generators: The case of a two-limb system"],
     "doi": "10.1243/09596518jsce623",
-    "pagerank": 69
+    "score": 69
   }
 ]
